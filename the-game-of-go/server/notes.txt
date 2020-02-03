@@ -1,0 +1,162 @@
+REQUEST_JOIN_SERVER
+  Description:
+    A client wishes to connect to the server. Assign it a clientId and do any other bookkeeping.
+  Response:
+    REQUEST_JOIN_SERVER_FINISHED to originating client
+  Structure: {
+    type: "REQUEST_JOIN_SERVER"
+    meta: {
+      clientId: ""
+    },
+    payload: {},
+    error: null
+  }
+
+REQUEST_JOIN_SERVER_FINISHED
+  Description:
+    The server has received a REQUEST_JOIN_SERVER and finished processing it.  
+  Response: 
+    none
+  Structure: {
+    type: "REQUEST_JOIN_SERVER_FINISHED"
+    meta: {
+      clientId // the clientId assigned during processing of the REQUEST_JOIN_SERVER
+    },
+    payload: {},
+    error: null
+  }
+
+
+REQUEST_GET_GAMES
+  Description:
+    A client wants a list of the available games. Retrieve the necessary data from the db.
+  Response:
+    REQUEST_GET_GAMES_FINISHED to originating client
+  Structure: {
+    type: "REQUEST_GET_GAMES"
+    meta: {
+      clientId
+    },
+    payload: {},
+    error: null
+  }
+
+
+REQUEST_GET_GAMES_FINISHED
+  Description:
+    The server has finished processing a REQUEST_GET_GAMES and is sending the resulting list of games.
+  Response:
+    none
+  Structure: {
+    type: "REQUEST_GET_GAMES_FINISHED"
+    meta: {
+      clientId
+    },
+    payload: {
+      games: [
+        {
+          gameId,
+          gameName,
+          gameNPlayers,
+          gameMaxPlayers
+        }
+      ]
+    },
+    error: null
+  }
+
+
+REQUEST_CREATE_GAME
+  Description:
+    A client wishes to create a new game. Create it with the given information.
+  Response:
+    REQUEST_CREATE_GAME_FINISHED to all clients
+  Structure: {
+    type: "REQUEST_CREATE_GAME"
+    meta: {
+      clientId
+    },
+    payload: {
+      gameName
+    },
+    error: null
+  }
+
+
+REQUEST_CREATE_GAME_FINISHED
+  Description:
+    The server has finished creating a new game and is ready to notify the clients about it.  
+  Response:
+    none
+  Structure: {
+    type: "REQUEST_CREATE_GAME_FINISHED"
+    meta: {
+      clientId
+    },
+    payload: {
+      gameName,
+      gameId,
+      gameNPlayers,
+      gameMaxPlayers
+    },
+    error: null
+  }
+
+
+
+
+
+REQUEST_JOIN_GAME
+  Description:
+    A client wishes to join a game. Note that the game has not started yet; players are in a pre-game lobby.
+  Response:
+    REQUEST_JOIN_GAME_FINISHED to originating client
+  Structure: {
+    type: "REQUEST_JOIN_GAME_FINISHED"
+    meta: {
+      clientId
+    },
+    payload: {
+      gameId
+    },
+    error: null
+  }
+
+
+
+
+REQUEST_JOIN_GAME_FINISHED
+  Description:
+    The server has finished assigning a client to a game.
+  Response:
+    none
+  Structure: {
+    type: "REQUEST_JOIN_GAME_FINISHED"
+    meta: {
+      clientId
+    },
+    payload: {
+      gameId,
+      gameName,
+      gameNPlayers,
+      gameMaxPlayers,
+      gameRunning,
+      gamePlayers: [
+        {
+          clientId,
+          clientName,
+          color
+        }
+      ],
+      currentTurn,
+      board: [
+        [square0_0, square2_0...square18_0],
+        [square0_1, square2_1...square18_1],
+        .
+        .
+        .
+        [square0_18, square2_18...square18_18],
+      ],
+    },
+    error: null
+  }
