@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="31.013" height="31.013">
+  <path d="M.506.506l5 10 5-10" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.506 10.506l-5-10-5 10M.506 10.506l5 10 5-10" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.506 20.506l-5-10-5 10M20.506 10.506l5 10 5-10" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M30.506 20.506l-5-10-5 10M20.506.506l-10 5 10 5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.506 10.506l10-5-10-5M10.506.506l-10 5 10 5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M.506 10.506l10-5-10-5M20.506.506l5 10 5-10" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M30.506 10.506l-5-10-5 10" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M30.506.506l-10 5 10 5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20.506 10.506l10-5-10-5M20.506 20.506l5 10 5-10" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M30.506 30.506l-5-10-5 10" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M30.506 20.506l-10 5 10 5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20.506 30.506l10-5-10-5M.506 20.506l5 10 5-10" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.506 30.506l-5-10-5 10" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.506 20.506l-10 5 10 5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M.506 30.506l10-5-10-5M20.506 20.469l-10 5 10 5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10.506 30.469l10-5-10-5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

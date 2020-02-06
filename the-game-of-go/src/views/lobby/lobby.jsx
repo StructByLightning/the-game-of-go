@@ -5,18 +5,27 @@ import { connect } from 'react-redux'
 export default connect(
   (state) => {
     return {
-      serverConnected: state.misc.connected
+      lobby: state.lobbies[state.currentLobby.lobbyId]
     };
   }, (dispatch) => ({})
 )(class Lobby extends React.Component {
   render() {
     return (
-      <div className="lobby">
-        This is the game of Go.
-        <div>
-          Connected to server: {"" + this.props.serverConnected}
-        </div>
-      </div>
+      <main className="lobby">
+        <header>
+          <h1>{this.props.lobby.lobbyName}</h1>
+        </header>
+
+        {Object.keys(this.props.lobby.members).length < 2 && (
+          <div>
+            Waiting for another player...
+          </div>
+        )}
+
+        <nav>
+          <button className="button">Start</button>
+        </nav>
+      </main>
     );
   }
 })

@@ -1,0 +1,120 @@
+:root {
+  //static
+  --primary-1: #10072c;
+  --primary-2: #1f0e58;
+  --primary-3: #2f1584;
+  --primary-4: #3e1cb0;
+  --primary-5: #4e22dd;
+  --primary-6: #714fe3;
+  --primary-7: #957bea;
+  --primary-8: #b8a7f1;
+  --primary-9: #dcd3f8;
+
+  //interaction
+  --secondary-1: #070e2c;
+  --secondary-2: #0e1d58;
+  --secondary-3: #152b84;
+  --secondary-4: #1d3aaf;
+  --secondary-5: #2448db;
+  --secondary-6: #506de2;
+  --secondary-7: #7b91ea;
+  --secondary-8: #a7b6f1;
+  --secondary-9: #d3daf8;
+
+  //important
+  --tertiary-1: #052913;
+  --tertiary-2: #095325;
+  --tertiary-3: #0e7c38;
+  --tertiary-4: #12a54b;
+  --tertiary-5: #17cf5d;
+  --tertiary-6: #2ce874;
+  --tertiary-7: #55ec8f;
+  --tertiary-8: #7ef1aa;
+  --tertiary-9: #a8f5c6;
+
+  --danger-0: #170303;
+  --danger-1: #450808;
+  --danger-2: #720d0d;
+  --danger-3: #a01313;
+  --danger-4: #cd1818;
+  --danger-5: #e73232;
+  --danger-6: #ec5f5f;
+  --danger-7: #f28d8d;
+  --danger-8: #f7bbbb;
+  --danger-9: #fce8e8;
+
+  --gray-0: #000000; //0
+  --gray-1: #080808; //3
+  --gray-2: #0f0f0f; //6
+  --gray-3: #171717; //9
+  --gray-4: #212121; //13
+  --gray-5: #292929; //16
+  --gray-6: #303030; //19
+  --gray-7: #383838; //22
+  --gray-8: #424242; //26
+  --gray-9: #4a4a4a; //29
+  --gray-10: #525252; //32
+  --gray-11: #595959; //35
+  --gray-12: #636363; //39
+  --gray-13: #6b6b6b; //42
+  --gray-14: #737373; //45
+  --gray-15: #7a7a7a; //48
+  --gray-16: #858585; //52
+  --gray-17: #8c8c8c; //55
+  --gray-18: #949494; //58
+  --gray-19: #9c9c9c; //61
+  --gray-20: #a6a6a6; //65
+  --gray-21: #adadad; //68
+  --gray-22: #b5b5b5; //71
+  --gray-23: #bdbdbd; //74
+  --gray-24: #c7c7c7; //78
+  --gray-25: #cfcfcf; //81
+  --gray-26: #d6d6d6; //84
+  --gray-27: #dedede; //87
+  --gray-28: #e8e8e8; //91
+  --gray-29: #f0f0f0; //94
+  --gray-30: #f7f7f7; //97
+  --gray-31: #ffffff; //100
+
+  --space-tiny: 0.391rem;
+  --space-small: 0.625rem;
+  --space-medium: 1rem;
+  --space-large: 1.6rem;
+  --space-huge: 2.56rem;
+
+  //apply these to the component you want to be small (the sidebar)
+  //the other component should be 1
+  --flex-base: 1;
+  --flex-1: 0.62; //1/(1.61^1)
+  --flex-2: 0.38; //1/(1.61^2)
+  --flex-3: 0.23; //1/(1.61^3)
+  --flex-4: 0.14; //1/(1.61^4)
+  --flex-5: 0.09; //1/(1.61^5)
+
+  //
+  --spacing-1: 0.146rem; //1/1.61^4
+  --spacing-2: 0.236rem; //1/1.61^3
+  --spacing-3: 0.382rem; //1/1.61^2
+  --spacing-4: 0.618rem; //1/1.61^1
+  --spacing-5: 1rem;
+  --spacing-6: 1.618rem; //1*1.61^1
+  --spacing-7: 2.618rem; //1*1.61^2
+  --spacing-8: 4.235rem; //1*1.61^3
+  --spacing-9: 6.854rem; //1*1.61^4
+
+  //font sizes
+  //line-height varies based on both font-size and content widht
+  //short = 1/4 of screen
+  //medium = 1/2 of screen
+  //long = full screen
+  --font-size-0: 0.625rem;
+  --font-size-1: 0.8125rem;
+  --font-size-2: 1rem;
+  --font-size-3: 1.25rem;
+  --font-size-4: 1.625rem;
+  --font-size-5: 2.0625rem;
+  --font-size-6: 2.625rem;
+  --font-size-7: 4.226rem;
+  --font-size-8: 6.804rem;
+  --font-size-9: 10.95rem;
+}

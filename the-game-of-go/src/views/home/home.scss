@@ -1,0 +1,76 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 100%;
+  flex-grow: 1;
+
+  background-image: url("/images/wallpaper.jpg");
+  background-position: center;
+  background-size: cover;
+
+  .menu {
+    background-color: #100d09;
+    // background-image: url("../../svg/textures/fabric.svg");
+    background-repeat: repeat;
+
+    border-left: 15px solid white;
+    border-right: 15px solid white;
+    border-image: url("../../svg/borders/chain-border.svg");
+    border-image-slice: 11 11 11 11;
+    border-image-repeat: round;
+
+    h1 {
+      font-size: var(--font-size-6);
+      font-family: "Cinzel Decorative";
+      font-weight: 900;
+      line-height: 1em;
+      margin: 0;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 var(--spacing-6) var(--spacing-8) var(--spacing-6);
+    flex-grow: 1;
+
+    nav {
+      display: flex;
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .button + .button {
+      margin-top: var(--spacing-4);
+    }
+  }
+
+  .settings {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: var(--spacing-6);
+    box-sizing: border-box;
+    z-index: 1000;
+
+    .content {
+      width: 100%;
+      height: 100%;
+      border: 1px solid var(--gray-30);
+      padding: var(--spacing-5);
+      box-sizing: border-box;
+      background-color: #000000aa;
+
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: space-between;
+      nav {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}
