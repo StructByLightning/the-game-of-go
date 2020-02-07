@@ -8,10 +8,12 @@ body {
   background-color: var(--gray-0);
   font-size: var(--font-size-2);
   color: var(--gray-31);
+  font-family: "Inknut Antiqua";
 }
 
 * {
   font-size: var(--font-size-2);
+  line-height: 1.3em;
 }
 
 #root {
