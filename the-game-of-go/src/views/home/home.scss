@@ -11,7 +11,7 @@
 
   .menu {
     background-color: #100d09;
-    // background-image: url("../../svg/textures/fabric.svg");
+    background-image: url("../../svg/textures/fabric.svg");
     background-repeat: repeat;
 
     border-left: 15px solid white;
@@ -21,7 +21,7 @@
     border-image-repeat: round;
 
     h1 {
-      font-size: var(--font-size-6);
+      font-size: var(--font-size-7);
       font-family: "Cinzel Decorative";
       font-weight: 900;
       line-height: 1em;

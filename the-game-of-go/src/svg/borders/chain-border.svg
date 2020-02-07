@@ -27,9 +27,9 @@
      inkscape:window-height="480"
      id="namedview6"
      showgrid="false"
-     inkscape:zoom="16"
-     inkscape:cx="19.689543"
-     inkscape:cy="11.450587"
+     inkscape:zoom="22.627417"
+     inkscape:cx="29.570793"
+     inkscape:cy="17.336929"
      inkscape:current-layer="SVGRoot"
      showborder="false"
      showguides="true"
@@ -130,7 +130,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -290,4 +290,24 @@
      id="path1129-5-2-8-7-8-9-0-1-1-0-6-59"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccc" />
+  <path
+     style="fill:#ffffff;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+     d="m 0,10.518053 v 9.987883 l 2.784233,-4.984117 z"
+     id="path1298"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 20.49382,-5.9265139e-7 H 10.505937 L 15.490054,2.7842324 Z"
+     id="path1298-0"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 31.011874,20.505936 V 10.518053 L 28.227641,15.50217 Z"
+     id="path1298-9"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 10.505937,31.011876 H 20.49382 L 15.509703,28.227643 Z"
+     id="path1298-1"
+     inkscape:connector-curvature="0" />
 </svg>
