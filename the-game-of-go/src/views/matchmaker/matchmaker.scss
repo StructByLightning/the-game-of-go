@@ -1,22 +1,80 @@
 .matchmaker {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  flex-basis: 100%;
+  flex-grow: 1;
+
+  background-image: url("/images/go-wallpaper-2.jpg");
+  background-position: center;
+  background-size: cover;
 
   .lobbies {
-    .lobby {
-      background-color: var(--gray-7);
-      padding: var(--spacing-2) var(--spacing-8);
-      font-weight: bold;
-      cursor: pointer;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #000000dd;
+    margin: var(--spacing-4);
+    border: 25px solid white;
+    border-image: url("../../svg/borders/bars-1.svg");
+    border-image-slice: 20;
+    border-image-repeat: round;
 
-      &:hover {
-        filter: brightness(150%);
-      }
+    .lobby-table {
+      display: flex;
+      flex-direction: column;
     }
+  }
 
-    .lobby + .lobby {
-      margin-top: var(--spacing-4);
+  h1 {
+    text-transform: uppercase;
+    font-size: var(--font-size-4);
+    border-bottom: 3px solid var(--gray-30);
+  }
+
+  .button-row {
+    margin-top: var(--spacing-6);
+    display: flex;
+    justify-content: center;
+  }
+
+  .lobby-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-4);
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--gray-28);
+      color: var(--gray-0);
+      filter: brightness(150%);
     }
+  }
+
+  .lobby-row:first-child {
+    border: none;
+    background: transparent;
+    cursor: initial;
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  .lobby-name {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin-right: var(--spacing-8);
+  }
+
+  .lobby-players {
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .lobby + .lobby {
+    margin-top: var(--spacing-4);
   }
 }

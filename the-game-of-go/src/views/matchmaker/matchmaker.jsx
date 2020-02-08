@@ -44,22 +44,30 @@ export default connect(
     return (
       <main className="matchmaker">
         <section className="lobbies">
-          <h1>Lobbies</h1>
-          <nav>
-            {Object.keys(this.props.lobbies).map((lobbyId) => {
-              let lobby = this.props.lobbies[lobbyId];
-              return (
-                <div
-                  key={lobbyId}
-                  className="lobby"
-                  onClick={() => { this.lobbyOnclick(lobbyId) }}
-                >
-                  {lobby.lobbyName} ({Object.keys(lobby.members).length}/2)
-                </div>
-              )
-            })}
-          </nav>
+          <div>
+            <h1>Lobbies ({Object.keys(this.props.lobbies).length})</h1>
+            <div className="lobby-table">
+              <div className="lobby-row">
+                <div className="lobby-name">Lobby</div>
+                <div className="lobby-players">Players</div>
+
+              </div>
+              {Object.keys(this.props.lobbies).map((lobbyId) => {
+                let lobby = this.props.lobbies[lobbyId];
+                return (
+                  <div key={lobbyId + "-name"} className="lobby-row" onClick={() => { this.lobbyOnclick(lobbyId) }}>
+                    <div className="lobby-name">{lobby.lobbyName}</div>
+                    <div className="lobby-players">{Object.keys(lobby.members).length}/2</div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+          <div class="button-row">
+            <button class="button">Create</button>
+          </div>
         </section>
+
       </main>
     );
   }
