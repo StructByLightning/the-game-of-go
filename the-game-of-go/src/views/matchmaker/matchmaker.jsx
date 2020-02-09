@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Network from "clientNetwork/clientNetwork.js";
 import * as Actions from "store/actions/index.js";
 import store from "store/store.js";
+import network from 'clientNetwork/clientNetwork.js';
 
 export default connect(
   (state) => {
@@ -45,12 +46,10 @@ export default connect(
       <main className="matchmaker">
         <section className="lobbies">
           <div>
-            <h1>Lobbies ({Object.keys(this.props.lobbies).length})</h1>
             <div className="lobby-table">
               <div className="lobby-row">
-                <div className="lobby-name">Lobby</div>
+                <div className="lobby-name">Name</div>
                 <div className="lobby-players">Players</div>
-
               </div>
               {Object.keys(this.props.lobbies).map((lobbyId) => {
                 let lobby = this.props.lobbies[lobbyId];
@@ -64,7 +63,9 @@ export default connect(
             </div>
           </div>
           <div class="button-row">
-            <button class="button">Create</button>
+            <button class="button" onClick={() => {
+              Network.dispatch(Actions.REQUEST_CREATE_GAME({ gameName: store.getState().misc.clientId + "'s lobby" }));
+            }}>Create</button>
           </div>
         </section>
 

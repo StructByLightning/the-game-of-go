@@ -25,6 +25,10 @@
     background-color: var(--gray-28);
   }
 
+  &:focus {
+    outline: none;
+  }
+
   &.danger {
     color: var(--danger-5);
 
