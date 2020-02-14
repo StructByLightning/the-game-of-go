@@ -83,9 +83,28 @@ export const REQUEST_CREATE_LOBBY_FINISHED = (payload = {}, error = false, meta 
   }
 };
 
+export const REQUEST_LEAVE_LOBBY = (payload = {}, error = false, meta = {}) => {
+  return {
+    type: "REQUEST_LEAVE_LOBBY",
+    error,
+    meta,
+    payload
+  }
+};
+export const REQUEST_LEAVE_LOBBY_FINISHED = (payload = {}, error = false, meta = {}) => {
+  return {
+    type: "REQUEST_LEAVE_LOBBY_FINISHED",
+    error,
+    meta,
+    payload
+  }
+};
+
+
 export const map = {
   "REQUEST_JOIN_SERVER_FINISHED": REQUEST_JOIN_SERVER_FINISHED,
   "REQUEST_GET_LOBBIES_FINISHED": REQUEST_GET_LOBBIES_FINISHED,
   "REQUEST_JOIN_LOBBY_FINISHED": REQUEST_JOIN_LOBBY_FINISHED,
   "REQUEST_CREATE_LOBBY_FINISHED": REQUEST_CREATE_LOBBY_FINISHED,
+  "REQUEST_LEAVE_LOBBY_FINISHED": REQUEST_LEAVE_LOBBY_FINISHED,
 }

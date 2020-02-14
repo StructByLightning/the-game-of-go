@@ -5,7 +5,6 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--gray-0);
   font-size: var(--font-size-2);
   color: var(--gray-31);
   font-family: "Inknut Antiqua";
@@ -13,6 +12,10 @@ body {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: hidden;
+
+  background-color: var(--gray-2);
+  background-image: url("./svg/textures/lattice.svg");
+  background-repeat: repeat;
 }
 
 * {
@@ -31,4 +34,12 @@ h1 {
   display: flex;
   justify-content: center;
   margin: 0;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.invisible {
+  display: none;
 }

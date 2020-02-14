@@ -5,15 +5,30 @@
   justify-content: space-between;
   height: 100%;
 
-  background-color: var(--gray-2);
-  background-image: url("../../svg/textures/lattice.svg");
-  background-repeat: repeat;
+  .content {
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #000000dd;
+    margin: var(--spacing-4);
+    border: 25px solid white;
+    border-image: url("../../svg/borders/bars-1.svg");
+    border-image-slice: 20;
+    border-image-repeat: round;
+    flex-grow: 1;
+  }
 
   h1 {
     text-transform: uppercase;
   }
 
-  .button {
-    margin-bottom: var(--spacing-6);
+  nav {
+    display: flex;
+    justify-content: space-between;
+
+    .button:not(:first-child) {
+      margin-left: var(--spacing-4);
+    }
   }
 }

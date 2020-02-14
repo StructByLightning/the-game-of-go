@@ -20,7 +20,6 @@ export default connect(
   }
 
   lobbyOnclick = (lobbyId) => {
-    console.log(lobbyId);
     store.dispatch(Actions.SET_CURRENT_LOBBY({ lobbyId }))
     this.props.history.push('/lobby');
     Network.dispatch(Actions.REQUEST_JOIN_LOBBY({ lobbyId }));

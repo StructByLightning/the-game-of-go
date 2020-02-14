@@ -3,6 +3,8 @@ import './lobby.scss';
 import { connect } from 'react-redux'
 import * as Actions from "store/actions/index.js";
 import Network from 'clientNetwork/clientNetwork.js';
+import { Link } from 'react-router-dom';
+import store from "store/store.js";
 
 export default connect(
   (state) => {
@@ -28,24 +30,27 @@ export default connect(
     clearInterval(this.intervalHandle);
   }
 
+  leave = () => {
+    store.dispatch(Actions.SET_CURRENT_LOBBY({ lobbyId: null }))
+    this.props.history.push('/matchmaker');
+    Network.dispatch(Actions.REQUEST_LEAVE_LOBBY({ lobbyId: this.props.lobby.lobbyId }));
+  }
 
   render() {
     return (
       <main className="lobby">
-        <header>
-          <h1>{this.props.lobby.lobbyName}</h1>
-        </header>
+        <div className="content">
+          <header>
+            <h1>{this.props.lobby.lobbyName}</h1>
+          </header>
 
-        {Object.keys(this.props.lobby.members).length < 2 && (
-          <div>
-            Waiting for another player...
-          </div>
-        )}
-        {Object.keys(this.props.lobby.members).length >= 2 && (
+          <div className={Object.keys(this.props.lobby.members).length < 2 ? "" : "hidden"}>Waiting for another player...</div>
+
           <nav>
-            <button className="button">Start</button>
+            <button className="button danger" onClick={this.leave}>Leave</button>
+            <button className={Object.keys(this.props.lobby.members).length >= 2 ? "button" : "button hidden"} >Start</button>
           </nav>
-        )}
+        </div>
       </main>
     );
   }
