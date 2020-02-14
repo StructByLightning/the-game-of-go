@@ -41,6 +41,13 @@ class Store {
     }
   }
 
+  removeClientFromLobby = (clientId, lobbyId) => {
+    let lobby = this.state.lobbies[lobbyId];
+    if (lobby) {
+      lobby.members.splice(lobby.members.indexOf(clientId), 1);
+    }
+  }
+
   //clean up after a client dcs
   deleteClient = (socket) => {
     //find clientId

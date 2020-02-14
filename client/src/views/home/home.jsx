@@ -19,7 +19,6 @@ export default connect(
               <h1>Go</h1>
             </header>
             <nav>
-              <Link className="button" to="/home/ingame">Continue</Link>
               <Link className="button" to="/matchmaker">Multiplayer</Link>
               <Link className="button" to="/home/settings">Settings</Link>
             </nav>
