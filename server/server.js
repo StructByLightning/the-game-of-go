@@ -1,11 +1,11 @@
 //setup html server
 console.log("Starting web server...");
-const express = require("express");
-var path = require('path');
-const http = require('http');
-const https = require('https');
-const fs = require('fs');
-const uuid = require('./uuid.js');
+import express from "express";
+import path from "path";
+import http from "http";
+import https from "https";
+import fs from "fs";
+import network from "./network/network.js";
 
 
 /*uncomment for prod
@@ -77,35 +77,5 @@ httpServer.listen(8080, () => {
 });
 
 //socket server stuff
-const socketServer = http.createServer();
-const WebSocket = require("ws");
-const wss = new WebSocket.Server({ server: socketServer });
 
-wss.on("connection", socket => {
-  console.log("Socket connected");
-  socket.on("message", message => {
-    console.log("Socket message");
-    const data = JSON.parse(message);
-
-    if (data.type === "REQUEST_JOIN_SERVER") {
-      socket.send(JSON.stringify({
-        error: null,
-        meta: {
-          clientId: uuid()
-        },
-        type: "REQUEST_JOIN_SERVER_FINISHED",
-        payload: {}
-      }));
-    }
-  });
-  socket.on("error", error => {
-    console.log("Socket error");
-  })
-  socket.on("close", message => {
-    console.log("Socket closed");
-  })
-});
-
-socketServer.listen(5000, () => {
-  console.log("Socket server started (port 5000)");
-});
+network.listen(5000, http);
