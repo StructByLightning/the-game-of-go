@@ -1,5 +1,6 @@
 import WebSocket from "ws";
 import { actions } from "../actions/index.js";
+import store from "../store/store.js";
 
 class Network {
   listen = (port, http) => {
@@ -22,7 +23,8 @@ class Network {
         console.log("Socket error");
       })
       socket.on("close", message => {
-        console.log("Socket closed");
+        console.log("Socket closed", message);
+        store.deleteClient(socket);
       })
     });
 

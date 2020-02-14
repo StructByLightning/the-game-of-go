@@ -41,6 +41,32 @@ class Store {
     }
   }
 
+  //clean up after a client dcs
+  deleteClient = (socket) => {
+    //find clientId
+    let clientId = null;
+    for (const [key, value] of Object.entries(this.state.clients)) {
+      if (value.socket === socket) {
+        clientId = key;
+      }
+    }
+    if (clientId) {
+
+      let client = this.state.clients[clientId];
+
+      //remove from main client list
+      delete this.state.clients[clientId];
+
+      //remove from any lobbies
+      for (const [key, value] of Object.entries(this.state.lobbies)) {
+        value.members.splice(value.members.indexOf(clientId), 1);
+      }
+
+      console.log("Client disconnected", clientId)
+    }
+
+  }
+
 
 }
 
