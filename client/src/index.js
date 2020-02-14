@@ -15,6 +15,9 @@ import "./variables.scss";
 import "./index.scss";
 import "./button.scss";
 
+//if the user reloads the page, send them back to homepage
+window.location.hash = "";
+
 ReactDOM.render((
   <Provider store={store}>
     <HashRouter>
