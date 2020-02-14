@@ -23,16 +23,16 @@ export default connect(
     console.log(lobbyId);
     store.dispatch(Actions.SET_CURRENT_LOBBY({ lobbyId }))
     this.props.history.push('/lobby');
-    Network.dispatch(Actions.REQUEST_JOIN_GAME({ gameId: lobbyId }));
+    Network.dispatch(Actions.REQUEST_JOIN_LOBBY({ gameId: lobbyId }));
   }
 
   componentDidMount() {
     //immediate request an up to date list of lobbies
-    Network.dispatch(Actions.REQUEST_GET_GAMES({}));
+    Network.dispatch(Actions.REQUEST_GET_LOBBIES({}));
 
     //and also again every five seconds
     this.intervalHandle = setInterval(() => {
-      Network.dispatch(Actions.REQUEST_GET_GAMES({}));
+      Network.dispatch(Actions.REQUEST_GET_LOBBIES({}));
     }, 5000);
   }
 
@@ -64,7 +64,7 @@ export default connect(
           </div>
           <div class="button-row">
             <button class="button" onClick={() => {
-              Network.dispatch(Actions.REQUEST_CREATE_GAME({ gameName: store.getState().misc.clientId + "'s lobby" }));
+              Network.dispatch(Actions.REQUEST_CREATE_LOBBY({ gameName: store.getState().misc.clientId + "'s lobby" }));
             }}>Create</button>
           </div>
         </section>
