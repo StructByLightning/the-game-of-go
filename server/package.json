@@ -2,6 +2,7 @@
   "name": "the-game-of-go",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "express": "^4.17.1",
     "uuid-random": "^1.3.0",

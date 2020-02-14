@@ -4,12 +4,12 @@ import store from "../store/store.js";
 export default function (message, socket) {
   const id = uuid();
 
-  store.associateIdWithSocket(socket, id);
+  store.addClient(id, socket);
 
   socket.send(JSON.stringify({
     error: null,
     meta: {
-      clientId: uuid()
+      clientId: id
     },
     type: "REQUEST_JOIN_SERVER_FINISHED",
     payload: {}

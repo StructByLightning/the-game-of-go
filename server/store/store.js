@@ -1,21 +1,31 @@
 class Store {
   constructor() {
     this.state = {
-      sockets: {},
+      clients: {},
       lobbies: {},
     };
 
   }
 
-  associateIdWithSocket = (id, socket) => {
-    this.state.sockets[id] = socket;
+  addClient = (id, socket) => {
+    this.state.clients[id] = {
+      clientId: id,
+      socket,
+      lobby: null
+    }
+    console.log(id)
+  }
+
+  setClientLobby = (clientId, lobbyId) => {
+    this.state.clients[clientId].lobby = lobbyId;
   }
 
   addLobby = (id, name) => {
     this.state.lobbies[id] = {
       lobbyId: id,
       lobbyName: name,
-      members: []
+      members: [],
+      game: {}
     }
   }
 

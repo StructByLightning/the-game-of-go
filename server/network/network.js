@@ -9,10 +9,10 @@ class Network {
     wss.on("connection", socket => {
       console.log("Socket connected");
       socket.on("message", message => {
-        console.log("Socket message");
         const data = JSON.parse(message);
 
         if (actions[data.type]) {
+          console.log("Received message", data.type);
           actions[data.type](data, socket);
         } else {
           console.log("Unrecognized message", data);
