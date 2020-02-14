@@ -4,9 +4,9 @@
   flex-basis: 100%;
   flex-grow: 1;
 
-  background-image: url("/images/go-wallpaper-2.jpg");
-  background-position: center;
-  background-size: cover;
+  background-color: var(--gray-2);
+  background-image: url("../../svg/textures/lattice.svg");
+  background-repeat: repeat;
 
   .lobbies {
     max-width: 900px;
