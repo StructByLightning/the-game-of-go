@@ -2,18 +2,7 @@ class Store {
   constructor() {
     this.state = {
       sockets: {},
-      lobbies: {
-        "lobby-id-1": {
-          lobbyId: "lobby-id-1",
-          lobbyName: "lobby-1",
-          members: []
-        },
-        "lobby-id-2": {
-          lobbyId: "lobby-id-2",
-          lobbyName: "lobby-2",
-          members: []
-        }
-      },
+      lobbies: {},
     };
 
   }
@@ -23,7 +12,7 @@ class Store {
   }
 
   addLobby = (id, name) => {
-    this.state.lobbies[i] = {
+    this.state.lobbies[id] = {
       lobbyId: id,
       lobbyName: name,
       members: []
