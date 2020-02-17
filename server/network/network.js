@@ -24,7 +24,7 @@ class Network {
       })
       socket.on("close", message => {
         console.log("Socket closed", message);
-        store.deleteClient(socket);
+        actions["DISCONNECT_CLIENT"](null, socket);
       })
     });
 
