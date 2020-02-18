@@ -36,6 +36,11 @@ export default connect(
     Network.dispatch(Actions.REQUEST_LEAVE_LOBBY({ lobbyId: this.props.lobby.lobbyId }));
   }
 
+  start = () => {
+    this.props.history.push('/ingame');
+
+  }
+
   render() {
     return (
       <main className="lobby">
@@ -48,7 +53,7 @@ export default connect(
 
           <nav>
             <button className="button danger" onClick={this.leave}>Leave</button>
-            <button className={Object.keys(this.props.lobby.members).length >= 2 ? "button" : "button hidden"} >Start</button>
+            <button className={Object.keys(this.props.lobby.members).length >= 2 ? "button" : "button hidden"} onClick={this.start}>Start</button>
           </nav>
         </div>
       </main>

@@ -23,7 +23,7 @@ ReactDOM.render((
     <HashRouter>
       <Switch>
         <Redirect exact from="/" to="home" />
-        <Route path="/home" component={Home} />
+        <Route path="/home" component={Ingame} />
         <Route path="/matchmaker" component={Matchmaker} />
         <Route path="/lobby" component={Lobby} />
         <Route path="/ingame" component={Ingame} />

@@ -3,6 +3,7 @@ class Store {
     this.state = {
       clients: {},
       lobbies: {},
+      games: {},
     };
 
   }
@@ -11,7 +12,8 @@ class Store {
     this.state.clients[id] = {
       clientId: id,
       socket,
-      lobby: null
+      lobby: null,
+      gameId: null
     }
   }
 
@@ -37,7 +39,7 @@ class Store {
       lobbyId: id,
       lobbyName: name,
       members: [],
-      game: {}
+      gameId: null
     }
   }
 
