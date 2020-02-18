@@ -7,28 +7,100 @@
 
 .board {
   display: grid;
-  grid-template-columns: repeat(18, 2.5rem);
-  grid-template-rows: repeat(18, 2.5rem);
+
+  @media (orientation: landscape) {
+    --board-size: 90vh;
+  }
+
+  @media (orientation: portrait) {
+    --board-size: 90vw;
+  }
+
+  width: var(--board-size);
+  height: var(--board-size);
+  grid-template-columns: repeat(18, 1fr);
+  grid-template-rows: repeat(18, 1fr);
+  border: 3px solid var(--gray-16);
+  background-color: #1d0f02;
+  z-index: 0;
+  overflow: visible;
 
   .cell {
-    background-color: #1d0f02;
-    background-size: cover;
     position: relative;
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    border-radius: 0.5rem;
 
-    &:before {
-      content: "";
-      border-bottom: 1px solid white;
-      width: 100%;
-      position: absolute;
-      top: 50%;
+    &[state="black"] {
+      background-color: black;
+    }
+    &[state="white"] {
+      background-color: white;
     }
 
-    &:after {
-      content: "";
-      border-left: 1px solid white;
-      height: 100%;
-      position: absolute;
-      left: 50%;
+    &:hover {
+      border: 2px solid white;
+    }
+
+    //draw the grid with only 36 pseudo-elements by having the top row and left column draw all of the lines
+    //horizontal grid lines
+    &#cell0-0,
+    &#cell1-0,
+    &#cell2-0,
+    &#cell3-0,
+    &#cell4-0,
+    &#cell5-0,
+    &#cell6-0,
+    &#cell7-0,
+    &#cell8-0,
+    &#cell9-0,
+    &#cell10-0,
+    &#cell11-0,
+    &#cell12-0,
+    &#cell13-0,
+    &#cell14-0,
+    &#cell15-0,
+    &#cell16-0,
+    &#cell17-0 {
+      &:before {
+        content: "";
+        border-left: 1px solid var(--gray-16);
+        left: 50%;
+        top: 0;
+        position: absolute;
+        height: var(--board-size);
+        z-index: -1;
+      }
+    }
+
+    //vertical grid lines
+    &#cell0-0,
+    &#cell0-1,
+    &#cell0-2,
+    &#cell0-3,
+    &#cell0-4,
+    &#cell0-5,
+    &#cell0-6,
+    &#cell0-7,
+    &#cell0-8,
+    &#cell0-9,
+    &#cell0-10,
+    &#cell0-11,
+    &#cell0-12,
+    &#cell0-13,
+    &#cell0-14,
+    &#cell0-15,
+    &#cell0-16,
+    &#cell0-17 {
+      &:after {
+        content: "";
+        border-top: 1px solid var(--gray-16);
+        top: 50%;
+        left: 0;
+        position: absolute;
+        width: var(--board-size);
+        z-index: -1;
+      }
     }
   }
 }

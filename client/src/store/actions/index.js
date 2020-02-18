@@ -100,6 +100,22 @@ export const REQUEST_LEAVE_LOBBY_FINISHED = (payload = {}, error = false, meta =
   }
 };
 
+export const REQUEST_PLACE_STONE = (payload = {}, error = false, meta = {}) => {
+  return {
+    type: "REQUEST_PLACE_STONE",
+    error,
+    meta,
+    payload
+  }
+};
+export const REQUEST_PLACE_STONE_FINISHED = (payload = {}, error = false, meta = {}) => {
+  return {
+    type: "REQUEST_PLACE_STONE_FINISHED",
+    error,
+    meta,
+    payload
+  }
+};
 
 export const map = {
   "REQUEST_JOIN_SERVER_FINISHED": REQUEST_JOIN_SERVER_FINISHED,
@@ -107,4 +123,5 @@ export const map = {
   "REQUEST_JOIN_LOBBY_FINISHED": REQUEST_JOIN_LOBBY_FINISHED,
   "REQUEST_CREATE_LOBBY_FINISHED": REQUEST_CREATE_LOBBY_FINISHED,
   "REQUEST_LEAVE_LOBBY_FINISHED": REQUEST_LEAVE_LOBBY_FINISHED,
+  "REQUEST_PLACE_STONE_FINISHED": REQUEST_PLACE_STONE_FINISHED,
 }

@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import Network from "clientNetwork/clientNetwork.js";
 import * as Actions from "store/actions/index.js";
 import store from "store/store.js";
-import network from 'clientNetwork/clientNetwork.js';
 
 export default connect(
   (state) => {
