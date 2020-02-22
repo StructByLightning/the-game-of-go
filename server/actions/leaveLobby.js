@@ -1,7 +1,7 @@
 import store from "../store/store.js";
 
 export default function (message, socket) {
-  store.removeClientFromLobby(message.meta.clientIt, message.payload.lobbyId);
+  store.removeClientFromLobby(message.meta.clientId, message.payload.lobbyId);
 
   socket.send(JSON.stringify({
     error: null,
