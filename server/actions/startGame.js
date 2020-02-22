@@ -34,7 +34,6 @@ export default function (message, socket) {
       - payload should have a field called game that contains a copy of the game object
   */
 
-  let gameId = uuid();
   let members = store.getClientsInLobby(message.payload.lobbyId);
 
   if (members.length != 2) {
@@ -42,21 +41,23 @@ export default function (message, socket) {
     return;
   }
 
+  let gameId = uuid();
   store.setGameInLobby(message.payload.lobbyId, gameId);
-  members.forEach(id => {
-    store.setGameInClient(id, gameId);
-  });
-
   let game = store.addGame(gameId, members);
 
-  socket.send(JSON.stringify({
-    error: null,
-    meta: {
-      clientId: message.meta.clientId
-    },
-    type: "REQUEST_START_GAME_FINISHED",
-    payload: {
-      game
-    }
-  }));
+  members.map((clientId) => {
+    store.setGameInClient(clientId, gameId);
+    store.state.clients[clientId].socket.send(JSON.stringify({
+      error: null,
+      meta: {
+        clientId
+      },
+      type: "REQUEST_START_GAME_FINISHED",
+      payload: {
+        game
+      }
+    }));
+
+  })
+
 };

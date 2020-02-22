@@ -9,6 +9,7 @@ export default class GameReducer extends BaseReducer {
     board: []
   };
   [Actions.REQUEST_START_GAME_FINISHED().type](state, action) {
+    console.log("Received REQUEST_START_GAME_FINISHED")
     return {
       ...action.payload.game
     };
