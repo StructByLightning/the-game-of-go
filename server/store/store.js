@@ -93,7 +93,7 @@ class Store {
     this.state.clients[clientId].gameId = gameId;
   }
 
-  //add a game
+  //add a game 
   addGame = (gameId, members) => {
     let board = [];
     for (let y = 0; y < 19; y++) {
