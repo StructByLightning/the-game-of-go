@@ -1,4 +1,5 @@
 import store from "../store/store.js";
+import uuid from "uuid-random";
 
 export default function (message, socket) {
   /*
@@ -43,7 +44,7 @@ export default function (message, socket) {
   }
 
   store.setGameInLobby(message.payload.lobbyId, gameId);
-  member.forEach(id => {
+  members.forEach(id => {
     store.setGameInClient(id, gameId);
   });
 
