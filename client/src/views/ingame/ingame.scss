@@ -18,8 +18,8 @@
 
   width: var(--board-size);
   height: var(--board-size);
-  grid-template-columns: repeat(18, 1fr);
-  grid-template-rows: repeat(18, 1fr);
+  grid-template-columns: repeat(19, 1fr);
+  grid-template-rows: repeat(19, 1fr);
   border: 3px solid var(--gray-16);
   background-color: #1d0f02;
   z-index: 0;
@@ -61,7 +61,8 @@
     &#cell14-0,
     &#cell15-0,
     &#cell16-0,
-    &#cell17-0 {
+    &#cell17-0,
+    &#cell18-0 {
       &:before {
         content: "";
         border-left: 1px solid var(--gray-16);
@@ -91,7 +92,8 @@
     &#cell0-14,
     &#cell0-15,
     &#cell0-16,
-    &#cell0-17 {
+    &#cell0-17,
+    &#cell0-18 {
       &:after {
         content: "";
         border-top: 1px solid var(--gray-16);

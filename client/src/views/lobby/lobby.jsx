@@ -42,6 +42,11 @@ export default connect(
   }
 
   render() {
+    //redirect to the game board if there's already a game running
+    if (this.props.lobby.gameId) {
+      this.props.history.push("/ingame");
+    }
+
     return (
       <main className="lobby">
         <div className="content">

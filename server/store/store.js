@@ -82,34 +82,30 @@ class Store {
 
   //get clients from lobby
   getClientsInLobby = (lobbyId) => {
-    return store.lobbies[lobbyId].members;
+    return this.state.lobbies[lobbyId].members;
   }
 
   setGameInLobby = (lobbyId, gameId) => {
-    store.lobbies[lobbyId].gameId = gameId;
+    this.state.lobbies[lobbyId].gameId = gameId;
   }
 
-  setGameinClient = (clientId, gameId) => {
-    store.clients[clientId].gameId = gameId;
+  setGameInClient = (clientId, gameId) => {
+    this.state.clients[clientId].gameId = gameId;
   }
 
   //add a game
-  addgame = (gameId, members) => {
-    var board = [];
-    for (var x = 0; i < 19; ++i) {
-      board.push([]);
-      for (var y = 0; j < 19; ++j) {
-        var cell = {
-          x,
-          y,
-          state: null
-        }
-        board[x].push(cell);
+  addGame = (gameId, members) => {
+    let board = [];
+    for (let y = 0; y < 19; y++) {
+      const row = [];
+      for (let x = 0; x < 19; x++) {
+        row.push({ x, y, state: null });
       }
+      board.push(row);
     }
 
-    var ran = Math.floor(Math.random() * 2);
-    store.games[gameId] = {
+    let ran = Math.floor(Math.random() * 2);
+    this.state.games[gameId] = {
       gameId,
       turn: "black",
       black: members[ran],
@@ -118,7 +114,7 @@ class Store {
       board
     }
 
-    return store.games[gameId];
+    return this.state.games[gameId];
   }
 
 

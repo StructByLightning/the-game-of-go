@@ -8,6 +8,12 @@ export default class GameReducer extends BaseReducer {
     gameId: "",
     board: []
   };
+  [Actions.REQUEST_START_GAME_FINISHED().type](state, action) {
+    return {
+      ...action.payload.game
+    };
+  }
+
   [Actions.REQUEST_PLACE_STONE_FINISHED().type](state, action) {
     return {
       ...action.payload.game

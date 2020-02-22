@@ -1,4 +1,5 @@
 import store from "../store/store.js";
+import uuid from "uuid-random";
 
 export default function (message, socket) {
   /*
@@ -33,9 +34,8 @@ export default function (message, socket) {
       - payload should have a field called game that contains a copy of the game object
   */
 
-  var id = uuid();
-  var gameId = "game-" + id.slice(0, 4);
-  var members = store.getClientsInLobby(message.payload.lobbyId);
+  let gameId = uuid();
+  let members = store.getClientsInLobby(message.payload.lobbyId);
 
   if (members.length != 2) {
     console.log("Lobby size is not 2", lobbyId);
@@ -43,11 +43,11 @@ export default function (message, socket) {
   }
 
   store.setGameInLobby(message.payload.lobbyId, gameId);
-  member.forEach(id => {
+  members.forEach(id => {
     store.setGameInClient(id, gameId);
   });
 
-  var game = store.addGame(gameId, members);
+  let game = store.addGame(gameId, members);
 
   socket.send(JSON.stringify({
     error: null,
