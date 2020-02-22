@@ -14,9 +14,6 @@ export default connect(
 )(class Ingame extends React.Component {
   constructor(props) {
     super(props);
-
-    console.log("Game", this.props.game)
-
   }
 
   cellClick = (x, y) => {
@@ -25,6 +22,7 @@ export default connect(
     game.board[y][x].state = "white";
 
     store.dispatch(Actions.REQUEST_PLACE_STONE_FINISHED({ game }))
+    Network.dispatch(Actions.REQUEST_PLACE_STONE({ x, y }));
   }
 
   render() {

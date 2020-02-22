@@ -100,6 +100,24 @@ export const REQUEST_LEAVE_LOBBY_FINISHED = (payload = {}, error = false, meta =
   }
 };
 
+
+export const REQUEST_START_GAME = (payload = {}, error = false, meta = {}) => {
+  return {
+    type: "REQUEST_START_GAME",
+    error,
+    meta,
+    payload
+  }
+};
+export const REQUEST_START_GAME_FINISHED = (payload = {}, error = false, meta = {}) => {
+  return {
+    type: "REQUEST_START_GAME_FINISHED",
+    error,
+    meta,
+    payload
+  }
+};
+
 export const REQUEST_PLACE_STONE = (payload = {}, error = false, meta = {}) => {
   return {
     type: "REQUEST_PLACE_STONE",
@@ -124,4 +142,5 @@ export const map = {
   "REQUEST_CREATE_LOBBY_FINISHED": REQUEST_CREATE_LOBBY_FINISHED,
   "REQUEST_LEAVE_LOBBY_FINISHED": REQUEST_LEAVE_LOBBY_FINISHED,
   "REQUEST_PLACE_STONE_FINISHED": REQUEST_PLACE_STONE_FINISHED,
+  "REQUEST_START_GAME_FINISHED": REQUEST_START_GAME_FINISHED,
 }

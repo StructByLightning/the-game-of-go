@@ -37,8 +37,8 @@ export default connect(
   }
 
   start = () => {
+    Network.dispatch(Actions.REQUEST_START_GAME({ lobbyId: this.props.lobby.lobbyId }));
     this.props.history.push('/ingame');
-
   }
 
   render() {
