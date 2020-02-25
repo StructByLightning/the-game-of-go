@@ -7,8 +7,17 @@ import store from "store/store.js";
 
 export default connect(
   (state) => {
+    let color = null;
+    if (state.misc.clientId === state.game.black) {
+      color = "black";
+    } else if (state.misc.clientId === state.game.white) {
+      color = "white";
+    }
+    //remove after testing
     return {
-      game: state.game
+      game: state.game,
+      misc: state.misc,
+      color
     };
   }, (dispatch) => ({})
 )(class Ingame extends React.Component {
@@ -17,37 +26,54 @@ export default connect(
   }
 
   cellClick = (x, y) => {
-    let game = JSON.parse(JSON.stringify(this.props.game));
-
-    game.board[y][x].state = "white";
-
-    store.dispatch(Actions.REQUEST_PLACE_STONE_FINISHED({ game }))
     Network.dispatch(Actions.REQUEST_PLACE_STONE({ x, y }));
   }
 
   render() {
+
+    let mainClass = "ingame";
+    mainClass += this.props.color === this.props.game.turn ? " active" : "";
+    mainClass += " " + this.props.color;
+
     return (
-      <main className="ingame">
-        <div className="board">
-          {this.props.game.board.map((row) => {
-            return row.map((cell) => {
-              let cssClass = "cell";
-              let id = "cell" + cell.x + "-" + cell.y;
+      <main className={mainClass}>
+        <div className="wrapper">
+          <div className="sidebar" onMouseEnter={() => {
+            const sidebar = document.querySelector(".ingame .sidebar");
 
-              return (
-                <div
-                  key={cell.x + "-" + cell.y}
-                  id={id}
-                  className={cssClass}
-                  state={cell.state}
-                  onClick={() => { this.cellClick(cell.x, cell.y) }}
-                >
-                </div>
-              )
-            })
-          })}
+            if (sidebar.classList.contains("bottom")) {
+              sidebar.classList.remove("bottom");
+            } else {
+              sidebar.classList.add("bottom");
+            }
+          }}>
+            <div className="turn">
+              <div className="playerTurn">Your Turn</div>
+
+              <div className="enemyTurn">Opponent's Turn</div>
+            </div>
+            <div className="playerColor">Your color:&nbsp;<div>{this.props.color}</div></div>
+          </div>
+          <div className="board">
+            {this.props.game.board.map((row) => {
+              return row.map((cell) => {
+                let cssClass = "cell";
+                let id = "cell" + cell.x + "-" + cell.y;
+
+                return (
+                  <div
+                    key={cell.x + "-" + cell.y}
+                    id={id}
+                    className={cssClass}
+                    state={cell.state}
+                    onClick={() => { this.cellClick(cell.x, cell.y) }}
+                  >
+                  </div>
+                )
+              })
+            })}
+          </div>
         </div>
-
       </main>
     );
   }
