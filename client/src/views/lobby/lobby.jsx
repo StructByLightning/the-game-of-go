@@ -37,11 +37,20 @@ export default connect(
   }
 
   start = () => {
+    Network.dispatch(Actions.REQUEST_START_GAME({ lobbyId: this.props.lobby.lobbyId }));
     this.props.history.push('/ingame');
+  }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    //redirect to the game board if there's already a game running
+    if (this.props.lobby.gameId) {
+      this.props.history.push("/ingame");
+    }
   }
 
   render() {
+
+
     return (
       <main className="lobby">
         <div className="content">

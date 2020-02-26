@@ -60,8 +60,8 @@ export default connect(
               })}
             </div>
           </div>
-          <div class="button-row">
-            <button class="button" onClick={() => {
+          <div className="button-row">
+            <button className="button" onClick={() => {
               Network.dispatch(Actions.REQUEST_CREATE_LOBBY({ gameName: store.getState().misc.clientId + "'s lobby" }));
             }}>Create</button>
           </div>

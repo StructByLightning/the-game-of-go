@@ -3,10 +3,13 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-}
 
-.board {
-  display: grid;
+  &.white {
+    --player-color: white;
+  }
+  &.black {
+    --player-color: black;
+  }
 
   @media (orientation: landscape) {
     --board-size: 90vh;
@@ -16,30 +19,87 @@
     --board-size: 90vw;
   }
 
+  .wrapper {
+    display: flex;
+    height: var(--board-size);
+    border: 3px solid var(--primary-8);
+    position: relative;
+  }
+
+  .sidebar {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    background-color: #000000bb;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    z-index: 10;
+    padding: var(--spacing-4);
+
+    &.bottom {
+      bottom: 0;
+    }
+
+    .playerColor {
+      display: flex;
+      justify-content: center;
+      * {
+        display: inline;
+      }
+    }
+
+    .turn {
+      font-size: var(--font-size-4);
+      height: 2em;
+      position: relative;
+
+      > div {
+        font-size: var(--font-size-4);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--gray-30);
+
+        &.playerTurn {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.board {
+  display: grid;
+  box-sizing: border-box;
+
   width: var(--board-size);
   height: var(--board-size);
-  grid-template-columns: repeat(18, 1fr);
-  grid-template-rows: repeat(18, 1fr);
-  border: 3px solid var(--gray-16);
-  background-color: #1d0f02;
+  grid-template-columns: repeat(19, 1fr);
+  grid-template-rows: repeat(19, 1fr);
+  background-color: var(--primary-0);
   z-index: 0;
-  overflow: visible;
+  overflow: hidden;
 
   .cell {
     position: relative;
     box-sizing: border-box;
-    border: 0px solid transparent;
-    border-radius: 0.5rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 
     &[state="black"] {
-      background-color: black;
+      background-image: url("../../svg/icons/black-stone.svg");
     }
     &[state="white"] {
-      background-color: white;
-    }
-
-    &:hover {
-      border: 2px solid white;
+      background-image: url("../../svg/icons/white-stone.svg");
     }
 
     //draw the grid with only 36 pseudo-elements by having the top row and left column draw all of the lines
@@ -61,11 +121,13 @@
     &#cell14-0,
     &#cell15-0,
     &#cell16-0,
-    &#cell17-0 {
+    &#cell17-0,
+    &#cell18-0 {
       &:before {
         content: "";
-        border-left: 1px solid var(--gray-16);
-        left: 50%;
+        width: 2px;
+        background-color: var(--gray-13);
+        left: calc(50% - 1px);
         top: 0;
         position: absolute;
         height: var(--board-size);
@@ -91,10 +153,12 @@
     &#cell0-14,
     &#cell0-15,
     &#cell0-16,
-    &#cell0-17 {
+    &#cell0-17,
+    &#cell0-18 {
       &:after {
         content: "";
-        border-top: 1px solid var(--gray-16);
+        height: 1px;
+        background-color: var(--gray-13);
         top: 50%;
         left: 0;
         position: absolute;
@@ -102,5 +166,44 @@
         z-index: -1;
       }
     }
+  }
+}
+
+.ingame.active {
+  .wrapper {
+    border-color: var(--secondary-6);
+  }
+  &.black {
+    .cell:not([state]):hover {
+      background-image: url("../../svg/icons/black-stone.svg");
+    }
+  }
+
+  &.white {
+    .cell:not([state]):hover {
+      background-image: url("../../svg/icons/white-stone.svg");
+    }
+  }
+
+  .board {
+    animation: 1s ease-in-out infinite alternate board-active;
+  }
+
+  .sidebar .turn .playerTurn {
+    display: flex;
+    color: var(--secondary-6);
+  }
+  .sidebar .turn .enemyTurn {
+    display: none;
+  }
+}
+
+@keyframes board-active {
+  0% {
+    box-shadow: inset 0px 0px 1rem 0px var(--secondary-6);
+  }
+
+  100% {
+    box-shadow: inset 0px 0px 0px 0px var(--secondary-6);
   }
 }

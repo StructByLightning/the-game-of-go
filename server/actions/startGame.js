@@ -1,4 +1,5 @@
 import store from "../store/store.js";
+import uuid from "uuid-random";
 
 export default function (message, socket) {
   /*
@@ -23,6 +24,7 @@ export default function (message, socket) {
         turn: black|white,
         black: clientId, //of the player who's black
         white: clientId, //of the player who's white
+        members: [] 
         board: [[{x, y, state:black|white|null}]] //one cell object for each cell in the board, arranged into a 2D array for easy indexing
       }
     - in the game object, set both black and white
@@ -31,4 +33,31 @@ export default function (message, socket) {
     - send a REQUEST_START_GAME_FINISHED message to both clients
       - payload should have a field called game that contains a copy of the game object
   */
+
+  let members = store.getClientsInLobby(message.payload.lobbyId);
+
+  if (members.length != 2) {
+    console.log("Lobby size is not 2", lobbyId);
+    return;
+  }
+
+  let gameId = uuid();
+  store.setGameInLobby(message.payload.lobbyId, gameId);
+  let game = store.addGame(gameId, members);
+
+  members.map((clientId) => {
+    store.setGameInClient(clientId, gameId);
+    store.state.clients[clientId].socket.send(JSON.stringify({
+      error: null,
+      meta: {
+        clientId
+      },
+      type: "REQUEST_START_GAME_FINISHED",
+      payload: {
+        game
+      }
+    }));
+
+  })
+
 };

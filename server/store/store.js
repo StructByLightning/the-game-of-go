@@ -71,9 +71,50 @@ class Store {
         value.members.splice(value.members.indexOf(clientId), 1);
       }
 
+      //remove from any games
+      for (const [key, value] of Object.entries(this.state.games)) {
+        value.members.splice(value.members.indexOf(clientId), 1);
+      }
+
       console.log("Client disconnected", clientId)
     }
+  }
 
+  //get clients from lobby
+  getClientsInLobby = (lobbyId) => {
+    return this.state.lobbies[lobbyId].members;
+  }
+
+  setGameInLobby = (lobbyId, gameId) => {
+    this.state.lobbies[lobbyId].gameId = gameId;
+  }
+
+  setGameInClient = (clientId, gameId) => {
+    this.state.clients[clientId].gameId = gameId;
+  }
+
+  //add a game 
+  addGame = (gameId, members) => {
+    let board = [];
+    for (let y = 0; y < 19; y++) {
+      const row = [];
+      for (let x = 0; x < 19; x++) {
+        row.push({ x, y, state: null });
+      }
+      board.push(row);
+    }
+
+    let ran = Math.floor(Math.random() * 2);
+    this.state.games[gameId] = {
+      gameId,
+      turn: "black",
+      black: members[ran],
+      white: members[!ran ? 1 : 0],
+      members,
+      board
+    }
+
+    return this.state.games[gameId];
   }
 
 
