@@ -40,6 +40,9 @@ export default function (message, socket) {
   let gameId = client.gameId;
   let game = store.state.games[gameId];
 
+  if (game == null)
+    return;
+
   let color = null;
   if (game.black === clientId) {
     color = "black";

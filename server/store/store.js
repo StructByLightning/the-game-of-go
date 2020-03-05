@@ -77,6 +77,10 @@ class Store {
       for (const [key, value] of Object.entries(this.state.lobbies)) {
         let clientIndex = value.members.indexOf(clientId);
         if (clientIndex != -1) {
+          if (value.members.length == 2) {
+            let otherClient = clientIndex ? 0 : 1;
+            this.state.clients[value.members[otherClient]].gameId = null;
+          }
           value.members.splice(clientIndex, 1);
           value.gameId = null;
         }
