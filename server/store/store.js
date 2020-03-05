@@ -22,9 +22,14 @@ class Store {
     let newLobby = this.state.lobbies[lobbyId];
     let oldLobby = this.state.lobbies[client.lobby];
 
+    if (newLobby.members.length == 2)
+      return false;
+
     //remove client from current lobby
     if (oldLobby) {
-      oldLobby.members.splice(oldLobby.members.indexOf(clientId), 1);
+      let clientIndex = oldLobby.members.indexOf(clientId);
+      if (clientIndex != -1)
+        oldLobby.members.splice(clientIndex, 1);
     }
 
     //add client to new lobby
@@ -32,6 +37,8 @@ class Store {
     if (!newLobby.members.includes(clientId)) {
       newLobby.members.push(clientId);
     }
+
+    return true;
   }
 
   addLobby = (id, name) => {
@@ -46,7 +53,9 @@ class Store {
   removeClientFromLobby = (clientId, lobbyId) => {
     let lobby = this.state.lobbies[lobbyId];
     if (lobby) {
-      lobby.members.splice(lobby.members.indexOf(clientId), 1);
+      let clientIndex = lobby.members.indexOf(clientId);
+      if (clientIndex != -1)
+        lobby.members.splice(clientIndex, 1);
     }
   }
 
@@ -61,19 +70,21 @@ class Store {
     }
     if (clientId) {
 
-      let client = this.state.clients[clientId];
-
       //remove from main client list
       delete this.state.clients[clientId];
 
       //remove from any lobbies
       for (const [key, value] of Object.entries(this.state.lobbies)) {
-        value.members.splice(value.members.indexOf(clientId), 1);
+        let clientIndex = value.members.indexOf(clientId);
+        if (clientIndex != -1)
+          value.members.splice(clientIndex, 1);
       }
 
       //remove from any games
       for (const [key, value] of Object.entries(this.state.games)) {
-        value.members.splice(value.members.indexOf(clientId), 1);
+        let clientIndex = value.members.indexOf(clientId);
+        if (clientIndex != -1)
+          value.members.splice(clientIndex, 1);
       }
 
       console.log("Client disconnected", clientId)
@@ -116,8 +127,6 @@ class Store {
 
     return this.state.games[gameId];
   }
-
-
 }
 
 const store = new Store();
