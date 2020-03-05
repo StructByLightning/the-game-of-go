@@ -76,15 +76,18 @@ class Store {
       //remove from any lobbies
       for (const [key, value] of Object.entries(this.state.lobbies)) {
         let clientIndex = value.members.indexOf(clientId);
-        if (clientIndex != -1)
+        if (clientIndex != -1) {
           value.members.splice(clientIndex, 1);
+          value.gameId = null;
+        }
       }
 
       //remove from any games
       for (const [key, value] of Object.entries(this.state.games)) {
         let clientIndex = value.members.indexOf(clientId);
-        if (clientIndex != -1)
-          value.members.splice(clientIndex, 1);
+        if (clientIndex != -1) {
+          delete this.state.games[key];
+        }
       }
 
       console.log("Client disconnected", clientId);
