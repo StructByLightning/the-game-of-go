@@ -87,7 +87,7 @@ class Store {
           value.members.splice(clientIndex, 1);
       }
 
-      console.log("Client disconnected", clientId)
+      console.log("Client disconnected", clientId);
     }
   }
 
@@ -122,6 +122,7 @@ class Store {
       black: members[ran],
       white: members[!ran ? 1 : 0],
       members,
+      passes: 0,
       board
     }
 

@@ -6,6 +6,7 @@ import leaveLobby from "./leaveLobby.js";
 import startGame from "./startGame.js";
 import placeStone from "./placeStone.js";
 import disconnectClient from "./disconnectClient.js";
+import passTurn from "./passTurn.js";
 
 export const actions = {
   "REQUEST_JOIN_SERVER": joinServer,
@@ -16,6 +17,7 @@ export const actions = {
   "REQUEST_START_GAME": startGame,
   "REQUEST_PLACE_STONE": placeStone,
   "DISCONNECT_CLIENT": disconnectClient,
+  "REQUEST_PASS_TURN": passTurn,
 }
 
 
