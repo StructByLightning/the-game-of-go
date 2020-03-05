@@ -2,10 +2,10 @@ import store from "../store/store.js";
 
 export default function (message, socket) {
 
-  store.setClientLobby(message.meta.clientId, message.payload.lobbyId)
+  let result = store.setClientLobby(message.meta.clientId, message.payload.lobbyId)
 
   socket.send(JSON.stringify({
-    error: null,
+    error: result ? null : "Lobby full",
     meta: {
       clientId: message.meta.clientId
     },
