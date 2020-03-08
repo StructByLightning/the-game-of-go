@@ -22,7 +22,7 @@
   .wrapper {
     display: flex;
     height: var(--board-size);
-    border: 3px solid var(--primary-8);
+    border: 3px solid var(--pcolor-8);
     position: relative;
   }
 
@@ -84,7 +84,7 @@
   height: var(--board-size);
   grid-template-columns: repeat(19, 1fr);
   grid-template-rows: repeat(19, 1fr);
-  background-color: var(--primary-0);
+  background-color: var(--pcolor-0);
   z-index: 0;
   overflow: hidden;
 
@@ -171,7 +171,7 @@
 
 .ingame.active {
   .wrapper {
-    border-color: var(--secondary-6);
+    border-color: var(--scolor-6);
   }
   &.black {
     .cell:not([state]):hover {
@@ -191,7 +191,7 @@
 
   .sidebar .turn .playerTurn {
     display: flex;
-    color: var(--secondary-6);
+    color: var(--scolor-6);
   }
   .sidebar .turn .enemyTurn {
     display: none;
@@ -200,10 +200,10 @@
 
 @keyframes board-active {
   0% {
-    box-shadow: inset 0px 0px 1rem 0px var(--secondary-6);
+    box-shadow: inset 0px 0px 1rem 0px var(--scolor-6);
   }
 
   100% {
-    box-shadow: inset 0px 0px 0px 0px var(--secondary-6);
+    box-shadow: inset 0px 0px 0px 0px var(--color-6);
   }
 }
