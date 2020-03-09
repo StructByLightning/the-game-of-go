@@ -39,7 +39,11 @@ class ClientNetwork {
     };
   }
 
-  dispatch(action, state) {
+  dispatch(action, argState) {
+    let state = argState;
+    if (!state){
+      state = store.getState();
+    }
     if (this.server) {
       action.meta = {
         clientId: state.misc.clientId,
