@@ -12,7 +12,7 @@ body{
 
   color: var(--gray-31);
   font-size: var(--font-size-2);
-  font-family: "Inknut Antiqua";
+  font-family: var(--primary-font);
 
   background-color: var(--gray-2);
   background-image: url("./svg/textures/lattice.svg");

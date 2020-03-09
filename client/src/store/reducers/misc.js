@@ -8,14 +8,14 @@ export default class MiscReducer extends BaseReducer {
   initialState = {
     serverUrl: "ws://localhost:5000",
     connected: false,
-    clientId: ""
+    clientId: "",
   };
 
   [Actions.REQUEST_JOIN_SERVER_FINISHED().type](state, action) {
     return {
       ...state,
       connected: true,
-      clientId: action.meta.clientId
+      clientId: action.meta.clientId,
     };
   }
 }

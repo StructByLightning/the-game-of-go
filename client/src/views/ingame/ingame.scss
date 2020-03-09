@@ -29,6 +29,47 @@
     border: 3px solid var(--pcolor-8);
   }
 
+  .score-overlay{
+    position: absolute;
+    z-index: 11;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+
+    background: #000000bb;
+
+    .title{
+      font-weight: bold;
+      font-weight: bold;
+      font-size: var(--font-size-7);
+      font-family: var(--secondary-font);
+    }
+
+    .scores{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .score-color{
+      display: flex;
+      justify-content: flex-end;
+      margin-right: var(--spacing-2);
+
+      font-size: var(--font-size-4);
+    }
+
+    .score-value{
+      font-weight: bold;
+
+      font-size: var(--font-size-4);
+    }
+  }
+
   .sidebar{
     position: absolute;
     z-index: 10;
@@ -46,7 +87,7 @@
       bottom: 0;
     }
 
-    .playerColor{
+    .info{
       display: flex;
       justify-content: center;
 
@@ -60,7 +101,11 @@
 
       height: 2em;
 
+      font-weight: bold;
+
       font-size: var(--font-size-4);
+      font-family: var(--secondary-font);
+      text-transform: uppercase;
 
       > div{
         position: absolute;
@@ -75,7 +120,7 @@
         height: 100%;
 
         color: var(--gray-30);
-        font-size: var(--font-size-4);
+        font-size: var(--font-size-5);
         text-transform: uppercase;
 
         &.playerTurn{

@@ -9,7 +9,8 @@
 
   color: var(--gray-31);
 
-  font-family: "Inknut Antiqua";
+  font-family: var(--primary-font);
+  line-height: 1.3em;
 
   text-transform: uppercase;
   text-decoration: none;
