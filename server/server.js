@@ -6,7 +6,7 @@ import http from "http";
 import https from "https";
 import fs from "fs";
 import network from "./network/network.js";
-
+const __dirname = path.resolve();
 
 /*uncomment for prod
 const privateKey = fs.readFileSync('/etc/letsencrypt/live/ravenschultz.com/privkey.pem', 'utf8');
@@ -67,13 +67,13 @@ httpExpress.use(express.static("./build"));
 
 //otherwise just return the index since this is a spa
 httpExpress.get("*", function response(req, res) {
-  res.sendFile(path.join(__dirname + "/../build/index.html"));
+  res.sendFile(path.join(__dirname + "./build/index.html"));
 });
 
 
 const httpServer = http.createServer(httpExpress);
-httpServer.listen(8080, () => {
-  console.log("Web server started (port 8080)");
+httpServer.listen(80, () => {
+  console.log("Web server started (port 80)");
 });
 
 //socket server stuff

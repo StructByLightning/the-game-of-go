@@ -6,7 +6,7 @@ import Network from "clientNetwork/clientNetwork.js";
 
 export default class MiscReducer extends BaseReducer {
   initialState = {
-    serverUrl: "ws://localhost:5000",
+    serverUrl: "ws://ravenschultz.com:5000",
     connected: false,
     clientId: "",
   };

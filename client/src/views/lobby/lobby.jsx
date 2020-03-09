@@ -19,6 +19,13 @@ export default connect((state) => {
     this.intervalHandle = null;
   }
 
+  static get propTypes(){
+    return {
+      history: PropTypes.object,
+      lobby: PropTypes.object,
+    };
+  }
+
   componentDidMount() {
     //and also again every few seconds
     this.intervalHandle = setInterval(() => {

@@ -9,7 +9,6 @@ import Matchmaker from "views/matchmaker/matchmaker.jsx";
 import Ingame from "views/ingame/ingame.jsx";
 import Home from "views/home/home.jsx";
 
-import * as serviceWorker from "./serviceWorker";
 import Network from "clientNetwork/clientNetwork.js";
 import "./variables.scss";
 import "./index.scss";
@@ -31,9 +30,3 @@ ReactDOM.render(<Provider store={store}>
 </Provider>
 , document.getElementById("root"));
 
-
-
-//if you want your app to work offline and load faster, you can change
-//unregister() to register() below. Note this comes with some pitfalls.
-//learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import Network from "clientNetwork/clientNetwork.js";
 import * as Actions from "store/actions/index.js";
 import store from "store/store.js";
+import PropTypes from "prop-types";
+
 
 export default connect((state) => {
   let color = null;
@@ -23,6 +25,15 @@ export default connect((state) => {
 })(class Ingame extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  static get propTypes(){
+    return {
+      game: PropTypes.object,
+      lobby: PropTypes.object,
+      history: PropTypes.object,
+      color: PropTypes.string,
+    };
   }
 
   cellClick = (x, y) => {
@@ -53,8 +64,6 @@ export default connect((state) => {
     if (gameRunning){
       mainClass += this.props.color === this.props.game.turn ? " active" : "";
     }
-
-
 
     return (
       <main className={mainClass}>
@@ -115,3 +124,4 @@ export default connect((state) => {
     );
   }
 });
+

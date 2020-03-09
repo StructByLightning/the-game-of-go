@@ -9,7 +9,7 @@ export default class GameReducer extends BaseReducer {
     "turn": "black",
     "black": "07210f00-ed86-4679-b651-761fbb63d105",
     "white": "e0205bbc-d7ed-4c56-8ea8-42e769442584",
-    "members": ["e0205bbc-d7ed-4c56-8ea8-42e769442584", "07210f00-ed86-4679-b651-761fbb63d105",],
+    "members": ["e0205bbc-d7ed-4c56-8ea8-42e769442584", "07210f00-ed86-4679-b651-761fbb63d105"],
     "board": [
       [
         {
@@ -1876,7 +1876,6 @@ export default class GameReducer extends BaseReducer {
   }
 
   [Actions.REQUEST_GAME_OVER().type](state, action) {
-    console.log("####################################################################################################################################################################################################################");
     return {
       ...action.payload.game,
       scores: action.payload.scores,

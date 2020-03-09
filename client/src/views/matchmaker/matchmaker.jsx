@@ -18,6 +18,13 @@ export default connect((state) => {
     this.intervalHandle = null;
   }
 
+  static get propTypes(){
+    return {
+      lobbies: PropTypes.object,
+      history: PropTypes.object,
+    };
+  }
+
   lobbyOnclick = (lobbyId) => {
     store.dispatch(Actions.SET_CURRENT_LOBBY({ lobbyId, }));
     this.props.history.push("/lobby");
