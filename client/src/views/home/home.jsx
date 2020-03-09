@@ -1,15 +1,15 @@
-import React from 'react';
-import './home.scss';
-import { connect } from 'react-redux'
-import { Link, Route } from 'react-router-dom';
+import React from "react";
+import "./home.scss";
+import { connect } from "react-redux";
+import { Link, Route } from "react-router-dom";
 
-export default connect(
-  (state) => {
-    return {
-      serverConnected: state.misc.connected
-    };
-  }, (dispatch) => ({})
-)(class Home extends React.Component {
+export default connect((state) => {
+  return {
+    serverConnected: state.misc.connected,
+  };
+}, () => {
+  return {};
+})(class Home extends React.Component {
   render() {
     return (
       <main className="home">
@@ -38,4 +38,4 @@ export default connect(
       </main>
     );
   }
-})
+});

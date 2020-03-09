@@ -1,74 +1,84 @@
-.ingame {
+.ingame{
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100%;
 
-  &.white {
+  &.white{
     --player-color: white;
   }
-  &.black {
+
+  &.black{
     --player-color: black;
   }
 
-  @media (orientation: landscape) {
+  @media (orientation: landscape){
     --board-size: 90vh;
   }
 
-  @media (orientation: portrait) {
+  @media (orientation: portrait){
     --board-size: 90vw;
   }
 
-  .wrapper {
+  .wrapper{
+    position: relative;
+
     display: flex;
     height: var(--board-size);
+
     border: 3px solid var(--pcolor-8);
-    position: relative;
   }
 
-  .sidebar {
-    box-sizing: border-box;
+  .sidebar{
     position: absolute;
-    width: 100%;
-    background-color: #000000bb;
+    z-index: 10;
+
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    z-index: 10;
+    box-sizing: border-box;
+    width: 100%;
     padding: var(--spacing-4);
 
-    &.bottom {
+    background-color: #000000bb;
+
+    &.bottom{
       bottom: 0;
     }
 
-    .playerColor {
+    .playerColor{
       display: flex;
       justify-content: center;
-      * {
+
+      *{
         display: inline;
       }
     }
 
-    .turn {
-      font-size: var(--font-size-4);
-      height: 2em;
+    .turn{
       position: relative;
 
-      > div {
-        font-size: var(--font-size-4);
+      height: 2em;
+
+      font-size: var(--font-size-4);
+
+      > div{
         position: absolute;
         top: 0;
         left: 0;
-        height: 100%;
-        width: 100%;
-        box-sizing: border-box;
-        text-transform: uppercase;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: var(--gray-30);
 
-        &.playerTurn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+
+        color: var(--gray-30);
+        font-size: var(--font-size-4);
+        text-transform: uppercase;
+
+        &.playerTurn{
           display: none;
         }
       }
@@ -76,134 +86,120 @@
   }
 }
 
-.board {
+.board{
+  z-index: 0;
+
   display: grid;
+  grid-template-rows: repeat(19, 1fr);
+  grid-template-columns: repeat(19, 1fr);
   box-sizing: border-box;
 
   width: var(--board-size);
   height: var(--board-size);
-  grid-template-columns: repeat(19, 1fr);
-  grid-template-rows: repeat(19, 1fr);
-  background-color: var(--pcolor-0);
-  z-index: 0;
   overflow: hidden;
 
-  .cell {
+  background-color: var(--pcolor-0);
+
+  .cell{
     position: relative;
+
     box-sizing: border-box;
-    background-size: cover;
+
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
 
-    &[state="black"] {
+    &[state="black"]{
       background-image: url("../../svg/icons/black-stone.svg");
     }
-    &[state="white"] {
+
+    &[state="white"]{
       background-image: url("../../svg/icons/white-stone.svg");
     }
 
     //draw the grid with only 36 pseudo-elements by having the top row and left column draw all of the lines
     //horizontal grid lines
-    &#cell0-0,
-    &#cell1-0,
-    &#cell2-0,
-    &#cell3-0,
-    &#cell4-0,
-    &#cell5-0,
-    &#cell6-0,
-    &#cell7-0,
-    &#cell8-0,
-    &#cell9-0,
-    &#cell10-0,
-    &#cell11-0,
-    &#cell12-0,
-    &#cell13-0,
-    &#cell14-0,
-    &#cell15-0,
-    &#cell16-0,
-    &#cell17-0,
-    &#cell18-0 {
-      &:before {
-        content: "";
-        width: 2px;
-        background-color: var(--gray-13);
-        left: calc(50% - 1px);
-        top: 0;
+
+    &#cell0-0, &#cell1-0, &#cell2-0, &#cell3-0, &#cell4-0, &#cell5-0, &#cell6-0, &#cell7-0, &#cell8-0, &#cell9-0, &#cell10-0, &#cell11-0, &#cell12-0, &#cell13-0, &#cell14-0, &#cell15-0, &#cell16-0, &#cell17-0, &#cell18-0{
+
+      &::before{
         position: absolute;
-        height: var(--board-size);
+        top: 0;
+        left: calc(50% - 1px);
         z-index: -1;
+
+        width: 2px;
+        height: var(--board-size);
+
+        background-color: var(--gray-13);
+
+        content: "";
       }
     }
 
     //vertical grid lines
-    &#cell0-0,
-    &#cell0-1,
-    &#cell0-2,
-    &#cell0-3,
-    &#cell0-4,
-    &#cell0-5,
-    &#cell0-6,
-    &#cell0-7,
-    &#cell0-8,
-    &#cell0-9,
-    &#cell0-10,
-    &#cell0-11,
-    &#cell0-12,
-    &#cell0-13,
-    &#cell0-14,
-    &#cell0-15,
-    &#cell0-16,
-    &#cell0-17,
-    &#cell0-18 {
-      &:after {
-        content: "";
-        height: 1px;
-        background-color: var(--gray-13);
+
+    &#cell0-0, &#cell0-1, &#cell0-2, &#cell0-3, &#cell0-4, &#cell0-5, &#cell0-6, &#cell0-7, &#cell0-8, &#cell0-9, &#cell0-10, &#cell0-11, &#cell0-12, &#cell0-13, &#cell0-14, &#cell0-15, &#cell0-16, &#cell0-17, &#cell0-18{
+
+      &::after{
+        position: absolute;
         top: 50%;
         left: 0;
-        position: absolute;
-        width: var(--board-size);
         z-index: -1;
+
+        width: var(--board-size);
+        height: 1px;
+
+        background-color: var(--gray-13);
+
+        content: "";
       }
     }
   }
 }
 
-.ingame.active {
-  .wrapper {
+.ingame.active{
+
+  .wrapper{
     border-color: var(--scolor-6);
   }
-  &.black {
-    .cell:not([state]):hover {
+
+  &.black{
+
+    .cell:not([state]):hover{
       background-image: url("../../svg/icons/black-stone.svg");
     }
   }
 
-  &.white {
-    .cell:not([state]):hover {
+  &.white{
+
+    .cell:not([state]):hover{
       background-image: url("../../svg/icons/white-stone.svg");
     }
   }
 
-  .board {
+  .board{
     animation: 1s ease-in-out infinite alternate board-active;
   }
 
-  .sidebar .turn .playerTurn {
+  .sidebar .turn .playerTurn{
     display: flex;
+
     color: var(--scolor-6);
   }
-  .sidebar .turn .enemyTurn {
+
+  .sidebar .turn .enemyTurn{
     display: none;
   }
 }
 
-@keyframes board-active {
-  0% {
-    box-shadow: inset 0px 0px 1rem 0px var(--scolor-6);
+@keyframes board-active{
+
+  0%{
+    box-shadow: inset 0 0 1rem 0 var(--scolor-6);
   }
 
-  100% {
-    box-shadow: inset 0px 0px 0px 0px var(--color-6);
+  100%{
+    box-shadow: inset 0 0 0 0 var(--color-6);
   }
 }

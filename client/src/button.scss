@@ -1,41 +1,46 @@
-/* General Button Style */
-.button {
+/*General Button Style*/
+
+.button{
   display: flex;
-  justify-content: center;
+  flex-shrink: 0;
   align-items: center;
+  justify-content: center;
   padding: var(--spacing-3) var(--spacing-6);
 
-  text-transform: uppercase;
-  text-decoration: none;
-  user-select: none;
+  color: var(--gray-31);
 
   font-family: "Inknut Antiqua";
 
-  color: var(--gray-31);
-  transition: all 0.25s ease-in-out;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  background-color: transparent;
 
   border: 1px solid var(--gray-28);
   border-radius: var(--spacing-7);
-  flex-shrink: 0;
-  background-color: transparent;
 
-  &:hover {
+  transition: all 0.25s ease-in-out;
+
+  user-select: none;
+
+  &:hover{
     color: var(--gray-0);
 
     background-color: var(--gray-28);
   }
 
-  &:focus {
+  &:focus{
     outline: none;
   }
 
-  &.danger {
+  &.danger{
     color: var(--danger-5);
 
     border-color: var(--danger-5);
 
-    &:hover {
+    &:hover{
       color: var(--gray-0);
+
       background-color: var(--danger-5);
     }
   }
