@@ -75,9 +75,6 @@
     "test": "node scripts/test.js",
     "server": "node server/server.js"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",

@@ -67,7 +67,7 @@ httpExpress.use(express.static("./build"));
 
 //otherwise just return the index since this is a spa
 httpExpress.get("*", function response(req, res) {
-  res.sendFile(path.join(__dirname + "./build/index.html"));
+  res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
 
