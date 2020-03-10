@@ -1,9 +1,9 @@
 import * as Actions from "store/actions/index.js";
-import store from "store/store.js"
+import store from "store/store.js";
 
 class ClientNetwork {
   constructor() {
-    this.server = undefined;
+    this.server = null;
   }
 
   listen() {
@@ -15,49 +15,45 @@ class ClientNetwork {
   }
 
   attemptConnection() {
-    console.log("Connecting");
-    this.server = new WebSocket(store.getState().misc.serverUrl);
+    let url = store.getState().misc.serverUrl;
+    //console.log("Connecting to", url);
+    this.server = new WebSocket(url);
     this.server.onopen = () => {
       this.dispatch(Actions.REQUEST_JOIN_SERVER({}));
     };
 
-    this.server.onmessage = event => {
+    this.server.onmessage = (event) => {
       const message = JSON.parse(event.data);
 
-      console.log("Received message:", message)
+      //console.log("Received message:", message);
       if (Actions.map[message.type]) {
         store.dispatch(Actions.map[message.type](message.payload, message.error, message.meta));
       }
 
-      console.log("New store:", store.getState());
-
+      //console.log("New store:", store.getState());
     };
 
     this.server.onclose = () => {
       this.server.close();
       store.dispatch(Actions.REQUEST_JOIN_SERVER());
-    }
+    };
   }
 
-  dispatch(action, state) {
+  dispatch(action, argState) {
+    let state = argState;
+    if (!state){
+      state = store.getState();
+    }
     if (this.server) {
-      if (!state) {
-        state = store.getState();
-      }
-
       action.meta = {
-        clientId: state.misc.clientId
-      }
+        clientId: state.misc.clientId,
+      };
 
-      console.log("Sent message:", action, "Current store:", state);
-
-      this.server.send(
-        JSON.stringify({
-          type: action.type,
-          payload: action.payload,
-          meta: action.meta
-        })
-      );
+      this.server.send(JSON.stringify({
+        type: action.type,
+        payload: action.payload,
+        meta: action.meta,
+      }));
     }
   }
 }

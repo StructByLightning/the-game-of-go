@@ -1,33 +1,34 @@
-.lobby {
+.lobby{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   height: 100%;
 
-  .content {
-    max-width: 900px;
+  .content{
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     justify-content: space-between;
-    background-color: #000000dd;
+    max-width: 900px;
     margin: var(--spacing-4);
+
+    background-color: #000000dd;
     border: 25px solid white;
     border-image: url("../../svg/borders/bars-1.svg");
     border-image-slice: 20;
     border-image-repeat: round;
-    flex-grow: 1;
   }
 
-  h1 {
+  h1{
     text-transform: uppercase;
   }
 
-  nav {
+  nav{
     display: flex;
     justify-content: space-between;
 
-    .button:not(:first-child) {
+    .button:not(:first-child){
       margin-left: var(--spacing-4);
     }
   }
