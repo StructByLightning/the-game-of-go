@@ -93,7 +93,7 @@ export default function (message, socket) {
     let black = captureAll(game.board, "black", null).length;
     let white = captureAll(game.board, "white", null).length;
 
-    game.Board.forEach(row => {
+    game.board.forEach(row => {
       row.forEach(cell => {
         black += cell.state == "black" ? 1 : 0;
         white += cell.state == "white" ? 1 : 0;

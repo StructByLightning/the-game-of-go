@@ -1,22 +1,29 @@
-import React from 'react';
-import './lobby.scss';
-import { connect } from 'react-redux'
+import React from "react";
+import "./lobby.scss";
+import { connect } from "react-redux";
 import * as Actions from "store/actions/index.js";
-import Network from 'clientNetwork/clientNetwork.js';
-import { Link } from 'react-router-dom';
+import Network from "clientNetwork/clientNetwork.js";
+import { Link } from "react-router-dom";
 import store from "store/store.js";
 
-export default connect(
-  (state) => {
-    return {
-      lobby: state.lobbies[state.currentLobby.lobbyId]
-    };
-  }, (dispatch) => ({})
-)(class Lobby extends React.Component {
+export default connect((state) => {
+  return {
+    lobby: state.lobbies[state.currentLobby.lobbyId],
+  };
+}, (dispatch) => {
+  return {};
+})(class Lobby extends React.Component {
   constructor(props) {
     super(props);
 
     this.intervalHandle = null;
+  }
+
+  static get propTypes(){
+    return {
+      history: PropTypes.object,
+      lobby: PropTypes.object,
+    };
   }
 
   componentDidMount() {
@@ -31,14 +38,14 @@ export default connect(
   }
 
   leave = () => {
-    store.dispatch(Actions.SET_CURRENT_LOBBY({ lobbyId: null }))
-    this.props.history.push('/matchmaker');
-    Network.dispatch(Actions.REQUEST_LEAVE_LOBBY({ lobbyId: this.props.lobby.lobbyId }));
+    store.dispatch(Actions.SET_CURRENT_LOBBY({ lobbyId: null, }));
+    this.props.history.push("/matchmaker");
+    Network.dispatch(Actions.REQUEST_LEAVE_LOBBY({ lobbyId: this.props.lobby.lobbyId, }));
   }
 
   start = () => {
-    Network.dispatch(Actions.REQUEST_START_GAME({ lobbyId: this.props.lobby.lobbyId }));
-    this.props.history.push('/ingame');
+    Network.dispatch(Actions.REQUEST_START_GAME({ lobbyId: this.props.lobby.lobbyId, }));
+    this.props.history.push("/ingame");
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -49,8 +56,6 @@ export default connect(
   }
 
   render() {
-
-
     return (
       <main className="lobby">
         <div className="content">
@@ -68,4 +73,4 @@ export default connect(
       </main>
     );
   }
-})
+});

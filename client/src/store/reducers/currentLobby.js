@@ -4,11 +4,11 @@ import BaseReducer from "./baseReducer";
 
 
 export default class CurrentLobbyReducer extends BaseReducer {
-  initialState = { lobbyId: "lobby-id-1" };
+  initialState = { lobbyId: "lobby-id-1", };
 
   [Actions.SET_CURRENT_LOBBY().type](state, action) {
     return {
-      lobbyId: action.payload.lobbyId
+      lobbyId: action.payload.lobbyId,
     };
   }
 }

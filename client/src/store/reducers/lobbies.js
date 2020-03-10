@@ -9,15 +9,15 @@ export default class LobbiesReducer extends BaseReducer {
 
   [Actions.REQUEST_GET_LOBBIES_FINISHED().type](state, action) {
     return {
-      ...action.payload.lobbies
-    };
-  }
-  [Actions.REQUEST_CREATE_LOBBY_FINISHED().type](state, action) {
-    return {
-      ...action.payload.lobbies
+      ...action.payload.lobbies,
     };
   }
 
+  [Actions.REQUEST_CREATE_LOBBY_FINISHED().type](state, action) {
+    return {
+      ...action.payload.lobbies,
+    };
+  }
 }
 
 

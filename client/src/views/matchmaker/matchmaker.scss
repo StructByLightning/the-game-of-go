@@ -1,76 +1,82 @@
-.matchmaker {
+.matchmaker{
   display: flex;
-  justify-content: center;
   flex-basis: 100%;
   flex-grow: 1;
+  justify-content: center;
 
-  .lobbies {
-    max-width: 900px;
+  .lobbies{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #000000dd;
+    max-width: 900px;
     margin: var(--spacing-4);
-    border: 25px solid white;
+
+    background-color: #000000dd;
+    border: 25px solid var(--gray-31);
     border-image: url("../../svg/borders/bars-1.svg");
     border-image-slice: 20;
     border-image-repeat: round;
 
-    .lobby-table {
+    .lobby-table{
       display: flex;
       flex-direction: column;
     }
   }
 
-  h1 {
-    text-transform: uppercase;
+  h1{
     font-size: var(--font-size-4);
+    text-transform: uppercase;
+
     border-bottom: 3px solid var(--gray-30);
   }
 
-  .button-row {
-    margin-top: var(--spacing-6);
+  .button-row{
     display: flex;
     justify-content: center;
+    margin-top: var(--spacing-6);
   }
 
-  .lobby-row {
+  .lobby-row{
     display: flex;
     justify-content: space-between;
     padding: var(--spacing-4);
+
     font-weight: bold;
+
     cursor: pointer;
 
-    &:hover {
-      background-color: var(--gray-28);
+    &:hover{
       color: var(--gray-0);
+
+      background-color: var(--gray-28);
       filter: brightness(150%);
     }
   }
 
-  .lobby-row:first-child {
-    border: none;
+  .lobby-row:first-child{
     background: transparent;
+    border: none;
     cursor: initial;
-    &:hover {
+
+    &:hover{
       color: inherit;
     }
   }
 
-  .lobby-name {
-    flex-grow: 1;
+  .lobby-name{
     display: flex;
+    flex-grow: 1;
     justify-content: center;
     margin-right: var(--spacing-8);
   }
 
-  .lobby-players {
-    width: 4rem;
+  .lobby-players{
     display: flex;
     justify-content: center;
+    width: 4rem;
   }
 
-  .lobby + .lobby {
+  .lobby + .lobby{
     margin-top: var(--spacing-4);
   }
 }

@@ -1,10 +1,16 @@
 import WebSocket from "ws";
 import { actions } from "../actions/index.js";
 import store from "../store/store.js";
+import fs from "fs";
 
 class Network {
-  listen = (port, http) => {
-    const socketServer = http.createServer();
+  listen = (port, https) => {
+    const socketServer = https.createServer({
+      cert: fs.readFileSync('/etc/letsencrypt/live/ravenschultz.com/cert.pem'),
+      key: fs.readFileSync('/etc/letsencrypt/live/ravenschultz.com/privkey.pem')
+      
+    });
+
     const wss = new WebSocket.Server({ server: socketServer });
 
     wss.on("connection", socket => {
